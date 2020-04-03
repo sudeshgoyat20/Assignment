@@ -1,0 +1,37 @@
+ 
+ 
+<body class="bodyBackground2"  [ngStyle]="{'background' : 'url(./assets/img/bg-1.png)  no-repeat 40% -10px'}"   >  
+  
+  <div><h3 class="celbrityHeader   
+  ">Product List</h3>
+  <div *ngIf="objData.cartView"><button (click)="viewCart()">Checkout Cart</button></div>
+</div>
+
+<div  >
+    <div class="animated fadeIn" style="    margin: 35px;">
+      <div class="row">
+        <div class="col-sm-6 col-lg-6"    style="cursor:pointer">
+          <div class="card text-white bg-info" *ngFor="let a of cartData">
+            <div class="card-body pb-0">
+              <button type="button" class="btn btn-transparent p-0 float-right">
+                
+              </button>
+               
+              <div><img [src]="a.imageName"> </div>
+              <div><p>{{a.price}}&nbsp;INR</p></div>
+              <div>Item Code-:{{a.codeNo}}</div>
+              <div><button (click)="addToCart(a)">Add to Cart</button></div>
+            </div>
+            <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+    
+            </div>
+          </div>
+        </div><!--/.col-->
+    
+        
+    
+      </div><!--/.row-->
+    
+    </div>
+  </div>
+</body>

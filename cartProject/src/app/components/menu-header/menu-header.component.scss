@@ -1,0 +1,37 @@
+ 
+a {
+    text-decoration: none;
+    color: white;
+}
+ 
+a:hover, a:active{
+    color: lightgray;
+}
+ 
+.navigation-items{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+ 
+mat-toolbar{
+    border-radius: 3px;
+}
+ 
+@media(max-width: 959px){
+    mat-toolbar{
+        border-radius: 0px;
+    }
+}
+.contentMenu{
+    color: white;    border-bottom: 0.1px solid white;
+}
+.picTag{
+    border-radius: 50%;
+    width: 47px;
+}
+.headerUsernmae{
+    color: white!important;
+    font-size: 13px;
+    text-transform: capitalize;
+}

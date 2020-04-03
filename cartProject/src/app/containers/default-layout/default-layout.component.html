@@ -1,0 +1,54 @@
+<style>
+  /* previous paging button */
+  :host /deep/ a.ng2-smart-page-link.page-link.page-link-prev {
+    height: 35px;
+  }
+  
+  /* next paging button */
+  :host /deep/ a.ng2-smart-page-link.page-link.page-link-next {
+    height: 35px;
+  }
+  :host /deep/ ng2-smart-table thead input-filter input{
+    text-align: center;
+    
+  }
+ 
+  
+</style>
+ 
+
+<app-header style="    background-color: #4F5299;    height: 70px;"
+[navbarBrandRouterLink]="['/dashboard']"
+[fixed]="true"
+ [navbarBrandFull]="{src: '', width: 55, height: 50, alt: ''}"
+[navbarBrandMinimized]="{src: '', width: 30, height: 30, alt: ''}"
+[sidebarToggler]="'lg'"
+[asideMenuToggler]=false>
+<ul class="nav navbar-nav d-md-down-none">
+  <img src="assets/img/vidgraph-logo-w.png" style="    padding-left: 43px;">
+</ul>
+<ul class="nav navbar-nav ml-auto">
+  <li class="nav-item dropdown" dropdown placement="bottom right" style="    padding-right: 62px;">
+    <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+      <img src="{{profilePic}}" class="img-avatar" alt=""/>
+      <span style="color: white;">Welcome {{name}} </span> </a>
+    
+  </li>
+</ul>
+</app-header>
+<div class="app-body">
+  <app-sidebar [fixed]="true" [display]="'lg'" style=" background-color: #4F5299;   ">
+    <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
+    <app-sidebar-minimizer></app-sidebar-minimizer>
+  </app-sidebar>
+  
+  <main class="main">
+    
+     
+    <router-outlet></router-outlet>
+         
+        </main> 
+      </div>
+      <app-footer>
+      </app-footer>
+ 

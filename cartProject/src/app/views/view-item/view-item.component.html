@@ -1,0 +1,190 @@
+ 
+  
+  <!-- <div style="margin-left: 93.5%">
+    <button class="btn btn-info" (click)="router.navigate(['/manageUsers'])" >Back</button>
+  </div> -->
+  
+<body class="bodyBackground2"  [ngStyle]="{'background' : 'url(./assets/img/bg-1.png)  no-repeat 40% -10px'}"  >  
+  <div>
+    <h3 class="celbrityHeader   
+    ">View Item</h3>
+  </div>
+  <div class="outerDivForForm">
+    
+
+  <!-- *ngIf="model.selectedUser!=null"  -->
+
+  <form   style="padding-left: 74px;"  class=" needs-validator  " >
+
+ 
+ 
+    <div class="row">
+     
+      <div class="form-group col-md-4">
+        <div> <img class="imageCl" [src]="singleItem.imageName"></div>
+     </div>
+     
+      <div class="form-group col-md-8"  >
+        <div *ngIf="showDiv==''">  
+        <p>Code No:- {{singleItem.codeNo}}</p>
+        <div> Quantity: &nbsp;{{singleItem.quantity}} <span>
+
+        <button mat-icon-button (click)="increaseOrDecreaseItem(1,singleItem.quantity)"><mat-icon>add</mat-icon> </button>  
+        </span>
+      <span><button mat-icon-button (click)="increaseOrDecreaseItem(2,singleItem.quantity)"><mat-icon>minimize</mat-icon></button> </span>
+      </div>
+<div>Price: &nbsp;{{singleItem.price}} &nbsp;INR</div>
+
+<div> <button (click)="showAdressBar()">Order Now</button></div>
+        </div>
+<div *ngIf="showDiv=='shippingAdress'">
+  <form class="needs-validator" [formGroup]="addressForm">
+    <h5>Shipping Address</h5>
+   <div> <button (click)="backandEdit()" >Back</button> </div><br>
+    <mat-form-field appearance="legacy"> 
+        <input placeholder="{{'Email Address'}}" matInput formControlName="email"
+               [ngClass]="{ 'is-invalid': addressForm.controls.email.errors}">
+        <mat-error *ngIf="addressForm.controls.email.errors">
+            <span *ngIf="addressForm.controls.email.errors.required">
+                {{'Email Address is required!'}}
+            </span>
+        </mat-error>
+    </mat-form-field>
+    <div class="container" fxLayout="row" fxLayout.xs="" fxLayoutGap="15px">
+        <div fxFlex="calc(50%-15px)">
+            <mat-form-field appearance="legacy"> 
+                <input matInput placeholder="{{' Name'}}" formControlName="name"
+                       [ngClass]="{ 'is-invalid': addressForm.controls.name.errors }">
+                <mat-error *ngIf="addressForm.controls.name.errors">
+                    <span *ngIf="addressForm.controls.name.errors.required">
+                        {{' Name is required!'}}
+                    </span>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div fxFlex="calc(50%-15px)">
+            <mat-form-field appearance="legacy"> 
+                <input matInput placeholder="{{'Street Address '}}" formControlName="streetAddress"
+                       [ngClass]="{ 'is-invalid': addressForm.controls.streetAddress.errors}">
+                <mat-error *ngIf="addressForm.controls.streetAddress.errors">
+                    <span *ngIf="addressForm.controls.streetAddress.errors.required">
+                        {{'Street Address is required!'}}
+                    </span>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-form-field appearance="legacy"> 
+        <input placeholder="{{'City'}}" matInput formControlName="city"
+               [ngClass]="{ 'is-invalid': addressForm.controls.city.errors}">
+        <mat-error *ngIf="addressForm.controls.city.errors">
+            <span *ngIf="addressForm.controls.city.errors.required">
+                {{'City is required!'}}
+            </span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy"> 
+        <input type="text"   matInput placeholder="{{'State'}}" formControlName="state"
+               [ngClass]="{ 'is-invalid': addressForm.controls.state.errors}">
+        <mat-error *ngIf="addressForm.controls.state.errors">
+            <span *ngIf="addressForm.controls.state.errors.required">
+                {{'State is required!'}}
+            </span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy"> 
+        <input type="text"   matInput placeholder="{{'Country'}}"
+               formControlName="country"
+               [ngClass]="{ 'is-invalid': addressForm.controls.country.errors}"
+               >
+        <mat-error *ngIf="addressForm.controls.country.errors">
+            <span *ngIf="addressForm.controls.country.errors.required">
+                {{'Country is required!'}}
+            </span>  
+            
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy"> 
+      <input type="text"   matInput placeholder="{{'Postal Code'}}"
+             formControlName="PostalCode"
+             [ngClass]="{ 'is-invalid': addressForm.controls.PostalCode.errors}">
+      <mat-error *ngIf="addressForm.controls.PostalCode.errors">
+          <span *ngIf="addressForm.controls.PostalCode.errors.required">
+              {{'Postal Code is required!'}}
+          </span>
+          
+      </mat-error>
+  </mat-form-field>
+    <button mat-raised-button [disabled]="addressForm.invalid" (click)="submit()" color="primary"
+            class="registerpage-loginbtn">
+        Next
+    </button>
+</form>
+</div>
+
+<div *ngIf="showDiv=='checkoutPage'">
+  <h5>Checkout:-</h5>
+  <button (click)="showAdressBar()">Edit Shiiping Adress</button>
+  <div *ngIf="applyCouponBtn"><button (click)="applyCupon()">Apply Coupon </button> </div>
+<div *ngIf="showCuponField"><input placeholder="Enter your coupon code" name="coupan" [(ngModel)]="CouponValue">
+  <button (click)="applyDiscount()">Apply Now</button>
+</div>
+<div>
+  <p>Item Code-&nbsp;{{singleItem.codeNo}}</p>
+  <p>Price -&nbsp;{{singleItem.price}} &nbsp;INR</p>
+  <p>Quantity-&nbsp;{{singleItem.quantity}}</p>
+  <div>
+    <p>Name:&nbsp;{{addressForm.value.name}}</p>
+    <p>Email Id:&nbsp;{{addressForm.value.email}}</p>
+    <p>Street Address:&nbsp;{{addressForm.value.streetAddress}}</p>
+    <p>City:&nbsp;{{addressForm.value.city}}</p>
+    <p>State:&nbsp;{{addressForm.value.state}}</p>
+    <p>Country :&nbsp;{{addressForm.value.country}}</p>
+    <p>Postal Code:&nbsp;{{addressForm.value.PostalCode}}</p>
+  </div>
+</div>
+<div><button  (click)="gotoFinalPage('welcomePage')">Submit </button></div>
+</div>
+
+
+<div *ngIf="showDiv=='welcomePage'">
+  <mat-card>
+    <h5>Congratulations! Your order has been successfuly placed.</h5>
+
+    <div><button (click)="goBacktoCart()">Go to Shopping Items</button></div>
+  </mat-card>
+
+</div>
+        </div>
+      
+    </div>
+
+
+
+  
+  
+
+
+
+ 
+  
+   
+ 
+   
+
+ 
+
+  
+ 
+
+ 
+</form>
+
+
+  
+  
+
+
+ 
+  </div>
+  </body>

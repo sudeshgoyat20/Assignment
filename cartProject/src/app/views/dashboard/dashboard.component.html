@@ -1,0 +1,25 @@
+ 
+ 
+<body class="bodyBackground2"  [ngStyle]="{'background' : 'url(./assets/img/bg-1.png)  no-repeat 40% -10px'}"   >  
+  
+  <div><h3 class="celbrityHeader   
+  ">Dashboard</h3></div>
+<div  >
+    <div class="animated fadeIn" style="    margin: 35px;">
+      <div class="row">
+        <div class="col-sm-6 col-lg-6"    style="cursor:pointer">
+           <mat-card class="cardItem" *ngFor="let a of cartArray;let i=index" (click)="goToViewPArticularItem(a)">
+             <h5>item {{i+1}}</h5>
+<p>{{a.name}}</p>
+<img src="{{a.imageName}}">
+<div class="remDev"><button (click)="removeItem(i)" >Remove Item</button></div>
+           </mat-card><br>
+        </div><!--/.col-->
+    
+        
+    
+      </div><!--/.row-->
+    
+    </div>
+  </div>
+</body>

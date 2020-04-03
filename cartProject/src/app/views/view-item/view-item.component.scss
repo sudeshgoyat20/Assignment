@@ -1,0 +1,29 @@
+.ng-select{
+  // width: 50%!important;
+ }
+ .uploadImageMessage{
+   color: red !important
+ }
+ .form-control{
+ //  width: 50%;
+}
+.bodyBackground2{
+ padding-bottom: 13px;  margin-top: 0px;  background-color: hsla(0,0%,82.7%,.2);
+ // height: auto;
+ //height: 42em;
+//  background-size: cover !important;
+ width: auto;
+}
+.form-control:focus{
+ border-color: transparent !important;
+ box-shadow:0 0 0 0.2rem transparent !important;
+}
+.mat-form-field{
+width: 72%;
+}
+.mat-select{
+border: 0px solid transparent!important;
+}
+.imageCl{
+  height: 300px;
+}
